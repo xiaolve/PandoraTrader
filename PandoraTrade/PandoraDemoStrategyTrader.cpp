@@ -289,7 +289,7 @@ int main()
 	std::cout << "Welcome To Pandora Trader !!" << std::endl;
 
 	std::cout << "Init Config From File!" << std::endl;
-	if (!ReadXmlConfigFile())
+	if (!ReadXmlConfigFile())//读不到xml文件就在5秒内关闭
 	{
 		std::cout << "Init Config Failed!!" << std::endl;
 		std::cout << "The Program will shut down in 5 seconds！" << std::endl;
@@ -297,7 +297,7 @@ int main()
 		int nCnt = 0;
 		while (nCnt < 6)
 		{
-			cwSleep(1000);
+			cwSleep(1000);//单纯等待6秒-glc
 			std::cout << nCnt << " . " << std::endl;
 			nCnt++;
 		}
@@ -306,7 +306,7 @@ int main()
 	}
 	std::cout << "User: " << m_szTdUserID << std::endl;
 
-	if (m_strStrategyConfigFile.size() == 0)
+	if (m_strStrategyConfigFile.size() == 0)//疑似多个策略一起启动-glc
 	{
 		m_cwStategy.InitialStrategy(NULL);
 	}
